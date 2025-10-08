@@ -1,8 +1,9 @@
 import * as pdfjsLib from 'pdfjs-dist';
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import mammoth from 'mammoth';
 
-// Configure PDF.js worker with a reliable CDN
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
+// Configure PDF.js worker using bundled worker asset (reliable in Vite)
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 export const parseDocument = async (file: File): Promise<string> => {
   const fileType = file.name.split('.').pop()?.toLowerCase();
