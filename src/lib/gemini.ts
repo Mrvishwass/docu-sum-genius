@@ -108,15 +108,3 @@ Answer:`;
   const result = await model.generateContent(prompt);
   return result.response.text();
 };
-
-export const translateText = async (text: string, targetLanguage: string): Promise<string> => {
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
-
-  const prompt = `Translate the following text to ${targetLanguage}. Maintain the formal tone and legal terminology where appropriate. Provide only the translation without any additional explanation.
-
-Text to translate:
-${text}`;
-
-  const result = await model.generateContent(prompt);
-  return result.response.text();
-};
